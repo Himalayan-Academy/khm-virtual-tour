@@ -1,0 +1,7 @@
+vendor/
+points-of-interest/**/*.jpg
+points-of-interest/**/*.mp4
+points-of-interest/**/*.jpeg
+points-of-interest/**/*.png
+points-of-interest/**/*.psd
+*.sh
