@@ -15,8 +15,8 @@ slider locations =
             , backgroundColor (hex "#8c3945")
             , width (pct 100)
 
-            --, position fixed
-            --, bottom (px 0)
+            -- , position fixed
+            -- , bottom (px 0)
             ]
         ]
         [ p [] [ text "hello" ]

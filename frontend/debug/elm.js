@@ -14509,6 +14509,7 @@ var author$project$Page$Location$navigation = F4(
 						]))
 				]));
 	});
+var rtfeldman$elm_css$Css$display = rtfeldman$elm_css$Css$prop1('display');
 var rtfeldman$elm_css$Css$stringsToValue = function (list) {
 	return elm$core$List$isEmpty(list) ? {value: 'none'} : {
 		value: A2(
@@ -14613,7 +14614,12 @@ var author$project$Page$Location$header = function (model) {
 										rtfeldman$elm_css$Css$justifyContent(rtfeldman$elm_css$Css$spaceAround),
 										rtfeldman$elm_css$Css$verticalAlign(rtfeldman$elm_css$Css$middle),
 										rtfeldman$elm_css$Css$padding(
-										rtfeldman$elm_css$Css$px(0))
+										rtfeldman$elm_css$Css$px(0)),
+										author$project$Ui$Theme$ifDesktop(
+										_List_fromArray(
+											[
+												rtfeldman$elm_css$Css$display(rtfeldman$elm_css$Css$none)
+											]))
 									]))
 							]),
 						_List_fromArray(
@@ -14793,7 +14799,6 @@ var author$project$Page$Location$makeThumb = F2(
 var rtfeldman$elm_css$Css$backgroundColor = function (c) {
 	return A2(rtfeldman$elm_css$Css$property, 'background-color', c.value);
 };
-var rtfeldman$elm_css$Css$flex = rtfeldman$elm_css$Css$prop1('flex');
 var rtfeldman$elm_css$Css$left = rtfeldman$elm_css$Css$prop1('left');
 var rtfeldman$elm_css$Css$rgba = F4(
 	function (r, g, b, alpha) {
@@ -14831,14 +14836,10 @@ var author$project$Page$Location$metadataView = function (data) {
 						[
 							rtfeldman$elm_css$Css$displayFlex,
 							rtfeldman$elm_css$Css$justifyContent(rtfeldman$elm_css$Css$spaceBetween),
-							rtfeldman$elm_css$Css$padding(
-							rtfeldman$elm_css$Css$px(25)),
 							rtfeldman$elm_css$Css$textAlign(rtfeldman$elm_css$Css$center),
-							author$project$Ui$Theme$ifMobile(
-							_List_fromArray(
-								[
-									rtfeldman$elm_css$Css$flexDirection(rtfeldman$elm_css$Css$column)
-								]))
+							rtfeldman$elm_css$Css$flexDirection(rtfeldman$elm_css$Css$column),
+							rtfeldman$elm_css$Css$maxHeight(
+							rtfeldman$elm_css$Css$pct(100))
 						]))
 				]),
 			_List_fromArray(
@@ -14853,7 +14854,9 @@ var author$project$Page$Location$metadataView = function (data) {
 									author$project$Ui$Theme$ifDesktop(
 									_List_fromArray(
 										[
-											rtfeldman$elm_css$Css$flex(
+											A2(
+											rtfeldman$elm_css$Css$flex2,
+											rtfeldman$elm_css$Css$int(1),
 											rtfeldman$elm_css$Css$int(1)),
 											rtfeldman$elm_css$Css$padding(
 											rtfeldman$elm_css$Css$px(20))
@@ -14876,8 +14879,8 @@ var author$project$Page$Location$metadataView = function (data) {
 											rtfeldman$elm_css$Css$px(3),
 											rtfeldman$elm_css$Css$solid,
 											rtfeldman$elm_css$Css$hex('#8c3945')),
-											rtfeldman$elm_css$Css$maxWidth(
-											rtfeldman$elm_css$Css$pct(100))
+											rtfeldman$elm_css$Css$maxHeight(
+											rtfeldman$elm_css$Css$px(300))
 										])),
 									rtfeldman$elm_css$Html$Styled$Attributes$src(
 									A2(author$project$Page$Location$makeThumb, 500, metadata.heroImage))
@@ -14909,6 +14912,39 @@ var author$project$Page$Location$metadataView = function (data) {
 					_List_fromArray(
 						[
 							rtfeldman$elm_css$Html$Styled$text(metadata.description)
+						])),
+					A2(
+					rtfeldman$elm_css$Html$Styled$p,
+					_List_fromArray(
+						[
+							rtfeldman$elm_css$Html$Styled$Attributes$css(
+							_List_fromArray(
+								[
+									rtfeldman$elm_css$Css$textAlign(rtfeldman$elm_css$Css$center),
+									author$project$Ui$Theme$ifMobile(
+									_List_fromArray(
+										[
+											rtfeldman$elm_css$Css$display(rtfeldman$elm_css$Css$none)
+										]))
+								]))
+						]),
+					_List_fromArray(
+						[
+							A2(
+							rtfeldman$elm_css$Html$Styled$img,
+							_List_fromArray(
+								[
+									rtfeldman$elm_css$Html$Styled$Attributes$css(
+									_List_fromArray(
+										[
+											rtfeldman$elm_css$Css$maxWidth(
+											rtfeldman$elm_css$Css$pct(80)),
+											rtfeldman$elm_css$Css$paddingBottom(
+											rtfeldman$elm_css$Css$px(15))
+										])),
+									rtfeldman$elm_css$Html$Styled$Attributes$src('https://dev.himalayanacademy.com/virtualtour/points-of-interest/feet.svg')
+								]),
+							_List_Nil)
 						]))
 				]))
 		]);
@@ -14922,6 +14958,7 @@ var elm_community$list_extra$List$Extra$getAt = F2(
 		return (idx < 0) ? elm$core$Maybe$Nothing : elm$core$List$head(
 			A2(elm$core$List$drop, idx, xs));
 	});
+var rtfeldman$elm_css$Css$flex = rtfeldman$elm_css$Css$prop1('flex');
 var elm$virtual_dom$VirtualDom$attribute = F2(
 	function (key, value) {
 		return A2(
@@ -15485,6 +15522,51 @@ var author$project$Page$Location$videosView = F3(
 					]))
 			]);
 	});
+var author$project$Page$Location$firstImage = function (listOfImages) {
+	var img = A2(
+		elm$core$Maybe$withDefault,
+		author$project$Types$brokenImage,
+		A2(elm_community$list_extra$List$Extra$getAt, 1, listOfImages));
+	return A2(author$project$Page$Location$makeThumb, 200, img.image);
+};
+var author$project$Page$Location$navigationThumb = F5(
+	function (id, label, url, imageUrl, active) {
+		return A2(
+			rtfeldman$elm_css$Html$Styled$div,
+			_List_fromArray(
+				[
+					rtfeldman$elm_css$Html$Styled$Attributes$css(
+					_List_fromArray(
+						[
+							rtfeldman$elm_css$Css$cursor(rtfeldman$elm_css$Css$pointer)
+						])),
+					rtfeldman$elm_css$Html$Styled$Events$onClick(
+					author$project$Page$Location$ChangeSubView(url))
+				]),
+			_List_fromArray(
+				[
+					A2(
+					rtfeldman$elm_css$Html$Styled$img,
+					_List_fromArray(
+						[
+							rtfeldman$elm_css$Html$Styled$Attributes$css(
+							_List_fromArray(
+								[
+									rtfeldman$elm_css$Css$maxWidth(
+									rtfeldman$elm_css$Css$px(150)),
+									rtfeldman$elm_css$Css$height(
+									rtfeldman$elm_css$Css$px(100)),
+									A3(
+									rtfeldman$elm_css$Css$border3,
+									rtfeldman$elm_css$Css$px(1),
+									rtfeldman$elm_css$Css$solid,
+									rtfeldman$elm_css$Css$hex('#333333'))
+								])),
+							rtfeldman$elm_css$Html$Styled$Attributes$src(imageUrl)
+						]),
+					_List_Nil)
+				]));
+	});
 var author$project$Ui$Slider$slider = function (locations) {
 	return A2(
 		rtfeldman$elm_css$Html$Styled$div,
@@ -15524,6 +15606,7 @@ var author$project$Ui$Slider$slider = function (locations) {
 			]));
 };
 var rtfeldman$elm_css$Css$dashed = {borderStyle: rtfeldman$elm_css$Css$Structure$Compatible, textDecorationStyle: rtfeldman$elm_css$Css$Structure$Compatible, value: 'dashed'};
+var rtfeldman$elm_css$Css$margin = rtfeldman$elm_css$Css$prop1('margin');
 var rtfeldman$elm_css$Css$rgb = F3(
 	function (r, g, b) {
 		return {
@@ -15552,53 +15635,58 @@ var author$project$Page$Location$wrapperInSlider = F3(
 			function (l, h) {
 				return (elm$core$List$length(l) > 0) ? h : A2(rtfeldman$elm_css$Html$Styled$div, _List_Nil, _List_Nil);
 			});
-		var navigationChunk = function () {
+		var navigationColumn = function () {
 			var _n0 = model.data;
 			if (_n0.$ === 'Just') {
 				var d = _n0.a;
 				return _List_fromArray(
 					[
-						A4(
-						author$project$Page$Location$navigation,
+						A5(
+						author$project$Page$Location$navigationThumb,
 						d.location.metadata.id,
 						'Description',
 						'',
+						author$project$Page$Location$firstImage(d.location.slideshows),
 						isActive('')),
 						A2(
 						hasContent,
 						d.location.slideshows,
-						A4(
-							author$project$Page$Location$navigation,
+						A5(
+							author$project$Page$Location$navigationThumb,
 							d.location.metadata.id,
 							'Photos',
 							'slideshows',
+							author$project$Page$Location$firstImage(d.location.slideshows),
 							isActive('slideshows'))),
 						A2(
 						hasContent,
 						d.location.panoramas,
-						A4(
-							author$project$Page$Location$navigation,
+						A5(
+							author$project$Page$Location$navigationThumb,
 							d.location.metadata.id,
 							'360° Photos',
 							'panoramas',
+							author$project$Page$Location$firstImage(d.location.panoramas),
 							isActive('panoramas'))),
 						A2(
 						hasContent,
 						d.location.videos,
-						A4(
-							author$project$Page$Location$navigation,
+						A5(
+							author$project$Page$Location$navigationThumb,
 							d.location.metadata.id,
 							'Videos',
 							'videos',
+							author$project$Page$Location$firstImage(d.location.slideshows),
 							isActive('videos'))),
 						A2(
 						hasContent,
 						d.location.quadVideos,
-						A4(
-							author$project$Page$Location$navigation,
+						A5(
+							author$project$Page$Location$navigationThumb,
 							d.location.metadata.id,
 							'4K Videos',
 							'videos4k',
+							author$project$Page$Location$firstImage(d.location.slideshows),
 							isActive('videos4k')))
 					]);
 			} else {
@@ -15615,14 +15703,9 @@ var author$project$Page$Location$wrapperInSlider = F3(
 						_List_fromArray(
 							[
 								rtfeldman$elm_css$Css$displayFlex,
-								rtfeldman$elm_css$Css$flexDirection(rtfeldman$elm_css$Css$column),
-								rtfeldman$elm_css$Css$height(
-								A3(
-									rtfeldman$elm_css$Css$calc,
-									rtfeldman$elm_css$Css$vh(100),
-									rtfeldman$elm_css$Css$minus,
-									rtfeldman$elm_css$Css$px(60)))
-							]))
+								rtfeldman$elm_css$Css$flexDirection(rtfeldman$elm_css$Css$column)
+							])),
+						rtfeldman$elm_css$Html$Styled$Attributes$class('contains-div')
 					]),
 				_List_fromArray(
 					[
@@ -15635,13 +15718,33 @@ var author$project$Page$Location$wrapperInSlider = F3(
 									[
 										rtfeldman$elm_css$Css$height(
 										rtfeldman$elm_css$Css$pct(100)),
+										rtfeldman$elm_css$Css$maxHeight(
+										rtfeldman$elm_css$Css$pct(100)),
 										rtfeldman$elm_css$Css$displayFlex,
-										rtfeldman$elm_css$Css$flexDirection(rtfeldman$elm_css$Css$row)
+										rtfeldman$elm_css$Css$flexDirection(rtfeldman$elm_css$Css$row),
+										rtfeldman$elm_css$Css$overflow(rtfeldman$elm_css$Css$hidden),
+										rtfeldman$elm_css$Css$padding(
+										rtfeldman$elm_css$Css$px(0)),
+										rtfeldman$elm_css$Css$margin(
+										rtfeldman$elm_css$Css$px(0))
 									]))
 							]),
 						_List_fromArray(
 							[
-								A2(rtfeldman$elm_css$Html$Styled$div, _List_Nil, subView),
+								A2(
+								rtfeldman$elm_css$Html$Styled$div,
+								_List_fromArray(
+									[
+										rtfeldman$elm_css$Html$Styled$Attributes$css(
+										_List_fromArray(
+											[
+												A2(
+												rtfeldman$elm_css$Css$flex2,
+												rtfeldman$elm_css$Css$int(1),
+												rtfeldman$elm_css$Css$int(1))
+											]))
+									]),
+								subView),
 								A2(
 								rtfeldman$elm_css$Html$Styled$div,
 								_List_fromArray(
@@ -15650,7 +15753,7 @@ var author$project$Page$Location$wrapperInSlider = F3(
 										_List_fromArray(
 											[
 												rtfeldman$elm_css$Css$width(
-												rtfeldman$elm_css$Css$pct(40)),
+												rtfeldman$elm_css$Css$pct(20)),
 												A3(
 												rtfeldman$elm_css$Css$border3,
 												rtfeldman$elm_css$Css$px(2),
@@ -15703,11 +15806,13 @@ var author$project$Page$Location$wrapperInSlider = F3(
 																rtfeldman$elm_css$Css$displayFlex,
 																rtfeldman$elm_css$Css$justifyContent(rtfeldman$elm_css$Css$spaceAround),
 																rtfeldman$elm_css$Css$verticalAlign(rtfeldman$elm_css$Css$middle),
+																rtfeldman$elm_css$Css$alignItems(rtfeldman$elm_css$Css$center),
 																rtfeldman$elm_css$Css$padding(
-																rtfeldman$elm_css$Css$px(0))
+																rtfeldman$elm_css$Css$px(0)),
+																rtfeldman$elm_css$Css$flexDirection(rtfeldman$elm_css$Css$column)
 															]))
 													]),
-												navigationChunk)
+												navigationColumn)
 											]))
 									]))
 							])),
@@ -15951,8 +16056,6 @@ var author$project$Ui$SocialButtons$buttons = A2(
 var rtfeldman$elm_css$Css$backgroundImage = rtfeldman$elm_css$Css$prop1('background-image');
 var rtfeldman$elm_css$Css$backgroundRepeat = rtfeldman$elm_css$Css$prop1('background-repeat');
 var rtfeldman$elm_css$Css$borderLeft3 = rtfeldman$elm_css$Css$prop3('border-left');
-var rtfeldman$elm_css$Css$display = rtfeldman$elm_css$Css$prop1('display');
-var rtfeldman$elm_css$Css$margin = rtfeldman$elm_css$Css$prop1('margin');
 var rtfeldman$elm_css$Css$overflowX = rtfeldman$elm_css$Css$prop1('overflow-x');
 var rtfeldman$elm_css$Css$overflowY = rtfeldman$elm_css$Css$prop1('overflow-y');
 var rtfeldman$elm_css$Css$repeat = {backgroundRepeat: rtfeldman$elm_css$Css$Structure$Compatible, backgroundRepeatShorthand: rtfeldman$elm_css$Css$Structure$Compatible, value: 'repeat'};

@@ -105,6 +105,33 @@ navigation id label url active =
         ]
 
 
+firstImage listOfImages =
+    let
+        img =
+            Maybe.withDefault brokenImage <| LE.getAt 1 listOfImages
+    in
+    makeThumb 200 img.image
+
+
+navigationThumb id label url imageUrl active =
+    div
+        [ css
+            [ cursor pointer
+            ]
+        , onClick (ChangeSubView url)
+        ]
+        [ img
+            [ css
+                [ maxWidth (px 150)
+                , height (px 100)
+                , border3 (px 1) solid (hex "#333333")
+                ]
+            , src imageUrl
+            ]
+            []
+        ]
+
+
 receivedData : Model -> Item -> Model
 receivedData model item =
     { model | data = Just item }
@@ -186,6 +213,7 @@ header model =
                         , justifyContent spaceAround
                         , verticalAlign middle
                         , padding (px 0)
+                        , ifDesktop [ display none ]
                         ]
                     ]
                     [ navigation d.location.metadata.id "Description" "" <| isActive ""
@@ -211,16 +239,15 @@ metadataView data =
         [ css
             [ displayFlex
             , justifyContent spaceBetween
-            , padding (px 25)
             , textAlign center
-            , ifMobile
-                [ flexDirection column ]
+            , flexDirection column
+            , maxHeight (pct 100)
             ]
         ]
         [ div
             [ css
                 [ ifDesktop
-                    [ flex (int 1)
+                    [ flex2 (int 1) (int 1)
                     , padding (px 20)
                     ]
                 ]
@@ -229,7 +256,7 @@ metadataView data =
                 [ css
                     [ borderRadius (px 20)
                     , border3 (px 3) solid (hex "#8c3945")
-                    , maxWidth (pct 100)
+                    , maxHeight (px 300)
                     ]
                 , src <| makeThumb 500 metadata.heroImage
                 ]
@@ -246,6 +273,21 @@ metadataView data =
                 ]
             ]
             [ text metadata.description ]
+        , p
+            [ css
+                [ textAlign center
+                , ifMobile [ display none ]
+                ]
+            ]
+            [ img
+                [ css
+                    [ maxWidth (pct 80)
+                    , paddingBottom (px 15)
+                    ]
+                , src "https://dev.himalayanacademy.com/virtualtour/points-of-interest/feet.svg"
+                ]
+                []
+            ]
         ]
     ]
 
@@ -598,14 +640,14 @@ wrapperInSlider model locations subView =
             else
                 div [] []
 
-        navigationChunk =
+        navigationColumn =
             case model.data of
                 Just d ->
-                    [ navigation d.location.metadata.id "Description" "" <| isActive ""
-                    , hasContent d.location.slideshows <| navigation d.location.metadata.id "Photos" "slideshows" <| isActive "slideshows"
-                    , hasContent d.location.panoramas <| navigation d.location.metadata.id "360° Photos" "panoramas" <| isActive "panoramas"
-                    , hasContent d.location.videos <| navigation d.location.metadata.id "Videos" "videos" <| isActive "videos"
-                    , hasContent d.location.quadVideos <| navigation d.location.metadata.id "4K Videos" "videos4k" <| isActive "videos4k"
+                    [ navigationThumb d.location.metadata.id "Description" "" (firstImage d.location.slideshows) <| isActive ""
+                    , hasContent d.location.slideshows <| navigationThumb d.location.metadata.id "Photos" "slideshows" (firstImage d.location.slideshows) <| isActive "slideshows"
+                    , hasContent d.location.panoramas <| navigationThumb d.location.metadata.id "360° Photos" "panoramas" (firstImage d.location.panoramas) <| isActive "panoramas"
+                    , hasContent d.location.videos <| navigationThumb d.location.metadata.id "Videos" "videos" (firstImage d.location.slideshows) <| isActive "videos"
+                    , hasContent d.location.quadVideos <| navigationThumb d.location.metadata.id "4K Videos" "videos4k" (firstImage d.location.slideshows) <| isActive "videos4k"
                     ]
 
                 Nothing ->
@@ -615,21 +657,27 @@ wrapperInSlider model locations subView =
         [ css
             [ displayFlex
             , flexDirection column
-            , height (calc (vh 100) minus (px 60))
+
+            -- , height (calc (vh 100) minus (px 60))
             ]
+        , class "contains-div"
         ]
         [ div
             [ css
                 [ height (pct 100)
+                , maxHeight (pct 100)
                 , displayFlex
                 , flexDirection row
+                , overflow hidden
+                , padding (px 0)
+                , margin (px 0)
                 ]
             ]
-            [ div [] subView
+            [ div [ css [ flex2 (int 1) (int 1) ] ] subView
             , div
                 -- Right side
                 [ css
-                    [ width (pct 40)
+                    [ width (pct 20)
                     , border3 (px 2) dashed (rgb 11 14 17)
                     , displayFlex
                     ]
@@ -649,10 +697,12 @@ wrapperInSlider model locations subView =
                             , displayFlex
                             , justifyContent spaceAround
                             , verticalAlign middle
+                            , alignItems center
                             , padding (px 0)
+                            , flexDirection column
                             ]
                         ]
-                        navigationChunk
+                        navigationColumn
                     ]
                 ]
             ]
