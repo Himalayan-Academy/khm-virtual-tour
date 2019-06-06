@@ -1,14 +1,15 @@
-import { writable } from "svelte/store";
-import queryString from "query-string";
-import About from "./About.svelte";
-import Gallery from "./Gallery.svelte";
+import { writable } from "svelte/store"
+import queryString from "query-string"
+import About from "./About.svelte"
+import Gallery from "./Gallery.svelte"
 import MapView from "./Map.svelte"
+import Item from "./Item.svelte"
 
 const routes = {
     "/about": About,
     "/map": MapView,
     "/galleries": Gallery,
-    "/location": Location,
+    "/location": Item,
     "*": MapView
 }
 
@@ -37,14 +38,12 @@ export const navigate = (loc, data) => {
         data.route = loc
     }
 
-    if (routes.hasOwnProperty(data.route)) {
-        data.view = routes[data.route]
-    } else {
-        data.view = routes["*"]
-    }
+    // if (routes.hasOwnProperty(data.route)) {
+    //     data.view = routes[data.route]
+    // } else {
+    //     data.view = routes["*"]
+    // }
 
-    console.log(data)
-    route.set(data)
-    history.pushState(data,"Virtual Tour", loc)
+    window.location = `index.html?${queryString.stringify(data)}`
 
 } 

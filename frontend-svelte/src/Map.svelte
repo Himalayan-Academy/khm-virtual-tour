@@ -53,9 +53,8 @@
               location.id
             }/${location.hero_image}">
             <br>
-            ${location.about} <a href="#/location/${
-          location.id
-        }">Learn more...</a>
+            ${location.about} 
+            <a href="index.html?route=/location&location=${location.id}">Learn more...</a>
             `);
       });
       console.log("markers", markers);
@@ -101,45 +100,48 @@
     cursor: pointer;
   }
 
-  span {
+  span a {
     text-decoration: none;
     color: rgb(250, 250, 250);
   }
 
   .social-buttons {
-      position: fixed;
-      display: flex;
-      bottom: 10px;
-      left: 10px;
-      z-index: 99999;
+    position: fixed;
+    display: flex;
+    bottom: 10px;
+    left: 10px;
+    z-index: 99999;
   }
 
   a.social-button {
-      width: 64px;
-      height: 64px;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      align-items: center;
-      text-decoration: none;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
   }
 </style>
 
 <div class="map">
   <div id="mapid" />
   {#if !locations}
-    <div/>
+    <div />
   {:else}
     <div class="item-column">
       <ul>
         {#each locations as location}
           <li>
-            <span>{location.title}</span>
+            <span>
+              <a href="?route=/location&location={location.id}">
+                {location.title}
+              </a>
+            </span>
           </li>
         {/each}
       </ul>
     </div>
-    <div class="social-buttons">
-    </div>
+    <div class="social-buttons" />
   {/if}
 </div>
