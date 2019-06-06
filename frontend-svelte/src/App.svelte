@@ -1,9 +1,9 @@
 <script>
-  import Navigation from "./Navigation.svelte";
-  import About from "./About.svelte";
-  import Gallery from "./Gallery.svelte";
-  import Map from "./Map.svelte"
+  import Navigation from "./Navigation.svelte"; 
+  import { route } from "./routes";
+
+  console.log("route", $route)
 </script>
 
 <Navigation />
-<Map />
+<svelte:component this={$route.view}/>

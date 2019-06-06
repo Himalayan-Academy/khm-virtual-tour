@@ -1,3 +1,7 @@
+<script>
+import {navigate} from "./routes.js";
+</script>
+
 <style>
   ._142498f0 {
     flex: 1 1;
@@ -80,7 +84,7 @@
     <a href="#/map" class="_d03ad334">Kauai's Hindu Monastery Virtual Tour</a>
   </h1>
   <ul class="_4925b2e7">
-    <a class="_54a92c25" href="#/map">
+    <a class="_54a92c25" href="#/map" on:click={() => navigate("/map")}>
       <svg
         class="feather feather-map"
         fill="none"
@@ -108,7 +112,7 @@
       </svg>
       <span class="_9d701ca9">Map</span>
     </a>
-    <a class="_54a92c25" href="#/galleries">
+    <a class="_54a92c25" href="#/galleries" on:click={() => navigate("/galleries")}> 
       <svg
         class="feather feather-image"
         fill="none"
@@ -136,7 +140,7 @@
       </svg>
       <span class="_9d701ca9">Galleries</span>
     </a>
-    <a class="_54a92c25" href="#/about">
+    <a class="_54a92c25" href="#/about" on:click={() => navigate("/about")}>
       <svg
         class="feather feather-info"
         fill="none"
