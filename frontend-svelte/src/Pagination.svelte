@@ -12,7 +12,7 @@
       dispatch("paginate", {page: i})
   }
 
-  const arr = Array.apply(null, { length: totalNumberOfItems }).map(
+  const arr = Array.apply(null, { length: Math.floor(totalNumberOfItems / itemsPerPage) }).map(
     Number.call,
     Number
   );
@@ -23,6 +23,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    width: 100%;
   }
 
   span {

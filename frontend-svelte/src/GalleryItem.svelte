@@ -44,7 +44,7 @@
   }
 </style>
 
-<a href="#/location/{id}">
+<a href="?route=/location&location={id}">
   <h1>{title}</h1>
   <img src={imageUrl} alt={title} />
   <p>{about}</p>
