@@ -21,6 +21,12 @@
     text-align: center;
   }
 
+  @media only screen and (max-width: 800px) {
+    a {
+      width: 50%;
+    }
+  }
+
   a:visited {
     color: #000;
   }

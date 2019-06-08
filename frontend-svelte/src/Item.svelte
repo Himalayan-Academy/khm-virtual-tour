@@ -14,6 +14,7 @@
 
     if (res.ok) {
       location = data.location;
+      document.title = `${location.metadata.title} - Kauai Hindu Monastery Virtual Tour`;
     } else {
       console.error("Error fetching locations", res);
     }
@@ -51,6 +52,7 @@
     align-items: center;
     vertical-align: top;
     justify-content: center;
+    overflow: scroll;
   }
 
   .current-tab figure.hero {
@@ -91,12 +93,8 @@
   h1 {
     color: rgb(140, 57, 69);
     font-family: Lato, sans-serif;
-    font-size: 48px;
-    margin: 0;
-    padding: 0;
+    font-size: 36px;
   }
-
- 
 </style>
 
 <div class="container flex">

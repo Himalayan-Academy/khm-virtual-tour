@@ -54,7 +54,7 @@
         alt="left" />
     </a>
     {#each locations as location}
-      <a class="item" href="#/location/{location.id}">
+      <a class="item" href="?route=/location&location={location.id}">
         <img
           src="http://dev.himalayanacademy.com/virtualtour/index.php/thumb/500/{location.id}/{location.hero_image}"
           alt={location.title} />

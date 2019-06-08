@@ -81,7 +81,7 @@ import {navigate} from "./routes.js";
 
 <nav class="_c5d81cdb">
   <h1 class="_142498f0">
-    <a href="#/map" class="_d03ad334">Kauai's Hindu Monastery Virtual Tour</a>
+    <a href="?route=/map" class="_d03ad334">Kauai's Hindu Monastery Virtual Tour</a>
   </h1>
   <ul class="_4925b2e7">
     <a class="_54a92c25" href="#" on:click={() => navigate("/map")}>

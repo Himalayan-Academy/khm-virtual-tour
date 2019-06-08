@@ -54,7 +54,9 @@
             }/${location.hero_image}">
             <br>
             ${location.about} 
-            <a href="index.html?route=/location&location=${location.id}">Learn more...</a>
+            <a href="index.html?route=/location&location=${
+              location.id
+            }">Learn more...</a>
             `);
       });
       console.log("markers", markers);
@@ -82,6 +84,12 @@
     background-color: #746e24;
     background-image: url("http://dev.himalayanacademy.com/virtualtour/points-of-interest/bg2.jpg")
       repeat;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .item-column {
+      display: none;
+    }
   }
 
   ul {
@@ -135,7 +143,7 @@
           <li>
             <span>
               <a href="?route=/location&location={location.id}">
-                {location.title}
+                 {location.title}
               </a>
             </span>
           </li>
