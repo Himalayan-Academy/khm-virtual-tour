@@ -67,10 +67,12 @@
   }
 
   img {
-    border-radius: 20px;
-    border: solid 3px #8c3945;
     max-height: 80px;
     overflow: hidden;
+  }
+
+  img.selector {
+    border: solid 1px white;
   }
 </style>
 
@@ -84,6 +86,7 @@
     {#each currentPageLocations as location}
       <a class="item" href="?route=/location&location={location.id}">
         <img
+          class="selector"
           src="http://dev.himalayanacademy.com/virtualtour/index.php/thumb/500/{location.id}/{location.hero_image}"
           alt={location.title} />
       </a>

@@ -138,6 +138,7 @@
           alt="decoration" />
       </div>
       <div class="tab-switcher">
+        {#if location['quad-videos'][0]}
         <div>
           <img
             class="arrow-1"
@@ -147,7 +148,9 @@
             src="http://img.youtube.com/vi/{location['quad-videos'][0].video}/maxresdefault.jpg"
             class="tab-item" />
         </div>
+        {/if}
 
+        {#if location.panoramas[0]}
         <div>
           <img
             class="arrow-1"
@@ -157,7 +160,9 @@
             src="http://dev.himalayanacademy.com/virtualtour/{location.panoramas[0].image}"
             class="tab-item" />
         </div>
+        {/if}
 
+        {#if location.slideshows[0]}
         <div>
           <img
             class="arrow-1"
@@ -167,7 +172,9 @@
             src="http://dev.himalayanacademy.com/virtualtour/{location.slideshows[0].image}"
             class="tab-item" />
         </div>
+        {/if}
 
+        {#if location.videos[0]}
         <div>
           <img
             class="arrow-1"
@@ -177,6 +184,7 @@
             src="http://img.youtube.com/vi/{location.videos[0].video}/maxresdefault.jpg"
             class="tab-item" />
         </div>
+        {/if}
       </div>
 
     </div>
