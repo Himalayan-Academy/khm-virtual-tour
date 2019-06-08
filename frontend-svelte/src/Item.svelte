@@ -14,7 +14,9 @@
 
     if (res.ok) {
       location = data.location;
-      document.title = `${location.metadata.title} - Kauai Hindu Monastery Virtual Tour`;
+      document.title = `${
+        location.metadata.title
+      } - Kauai Hindu Monastery Virtual Tour`;
     } else {
       console.error("Error fetching locations", res);
     }
@@ -79,15 +81,37 @@
   }
 
   .tab-switcher {
-    width: 20%;
-    min-width: 20%;
+    width: 15%;
+    min-width: 15%;
     background-color: #b7c1c1;
     display: flex;
     flex-direction: column;
   }
 
+  .tab-switcher div {
+    display: flex;
+    align-items:center;
+
+  }
+
+  @media only screen and (max-width: 800px) {
+    .tab-switcher {
+      display: none;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
+
   .arrow-1 {
     margin-left: -150px;
+    max-height: 120px;
+  }
+
+  .tab-item {
+    border: 2px solid white;
+    max-height: 60px;
+    margin-right: 10px;
   }
 
   h1 {
@@ -114,11 +138,47 @@
           alt="decoration" />
       </div>
       <div class="tab-switcher">
-        <img
-          class="arrow-1"
-          src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow_1.svg"
-          alt="decoration" />
+        <div>
+          <img
+            class="arrow-1"
+            src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow_1.svg"
+            alt="decoration" />
+          <img
+            src="http://img.youtube.com/vi/{location['quad-videos'][0].video}/maxresdefault.jpg"
+            class="tab-item" />
+        </div>
+
+        <div>
+          <img
+            class="arrow-1"
+            src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow_2.svg"
+            alt="decoration" />
+          <img
+            src="http://dev.himalayanacademy.com/virtualtour/{location.panoramas[0].image}"
+            class="tab-item" />
+        </div>
+
+        <div>
+          <img
+            class="arrow-1"
+            src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow_3.svg"
+            alt="decoration" />
+          <img
+            src="http://dev.himalayanacademy.com/virtualtour/{location.slideshows[0].image}"
+            class="tab-item" />
+        </div>
+
+        <div>
+          <img
+            class="arrow-1"
+            src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow_4.svg"
+            alt="decoration" />
+          <img
+            src="http://img.youtube.com/vi/{location.videos[0].video}/maxresdefault.jpg"
+            class="tab-item" />
+        </div>
       </div>
+
     </div>
     <GallerySlider class="sliders" />
   {:else}

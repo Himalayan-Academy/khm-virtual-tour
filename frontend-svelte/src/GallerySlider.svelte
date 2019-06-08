@@ -1,6 +1,13 @@
 <script>
   let locations = false;
 
+  export let currentPage = 0;
+  let itemsPerPage = 5;
+
+  let currentPageStart;
+  let currentPageEnd;
+  let currentPageLocations;
+
   async function getLocations() {
     const res = await fetch(
       "http://dev.himalayanacademy.com/virtualtour/index.php/locations"
@@ -9,9 +16,30 @@
     const data = await res.json();
 
     if (res.ok) {
-      locations = data.locations.slice(0, 5);
+      locations = data.locations;
     } else {
       console.error("Error fetching locations", res);
+    }
+  }
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      currentPage -= 1;
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < Math.floor(locations.length / itemsPerPage) + 1) {
+      currentPage += 1;
+    }
+  };
+
+  $: {
+    if (locations) {
+      currentPageStart = itemsPerPage * currentPage;
+      currentPageEnd = currentPageStart + itemsPerPage;
+      currentPageLocations = locations.slice(currentPageStart, currentPageEnd);
+      console.dir("selected locations", currentPageLocations);
     }
   }
 
@@ -35,7 +63,7 @@
   }
 
   .arrow {
-      width: 120px;
+    width: 120px;
   }
 
   img {
@@ -48,22 +76,22 @@
 
 <div class="sliders">
   {#if locations}
-    <a class="item arrow" href="#">
+    <a class="item arrow" href="#" on:click={prevPage}>
       <img
         src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow-l.svg"
         alt="left" />
     </a>
-    {#each locations as location}
+    {#each currentPageLocations as location}
       <a class="item" href="?route=/location&location={location.id}">
         <img
           src="http://dev.himalayanacademy.com/virtualtour/index.php/thumb/500/{location.id}/{location.hero_image}"
           alt={location.title} />
       </a>
     {/each}
-    <a class="item arrow" href="#">
+    <a class="item arrow" href="#" on:click={nextPage}>
       <img
         src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow-r.svg"
-        alt="right"/>
+        alt="right" />
     </a>
   {:else}
     <p>Loading</p>
