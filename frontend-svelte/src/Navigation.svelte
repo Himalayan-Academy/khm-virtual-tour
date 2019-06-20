@@ -1,5 +1,5 @@
 <script>
-import {navigate} from "./routes.js";
+  import { navigate } from "./routes.js";
 </script>
 
 <style>
@@ -83,15 +83,23 @@ import {navigate} from "./routes.js";
   .logo {
     width: 48px;
   }
+
+  @media only screen and (max-width: 800px) {
+    img.logo {
+      display: none;
+    }
+  }
 </style>
 
 <nav class="_c5d81cdb">
-  <img class="logo" src="images/logo.png" alt="Kaua'i Hindu Monastery Logo">
+  <img class="logo" src="images/logo.png" alt="Kaua'i Hindu Monastery Logo" />
   <h1 class="_142498f0">
-    <a href="?route=/map" class="_d03ad334">Kauai's Hindu Monastery Virtual Tour</a>
+    <a href="?route=/map" class="_d03ad334">
+      Kauai's Hindu Monastery Virtual Tour
+    </a>
   </h1>
   <ul class="_4925b2e7">
-    <a class="_54a92c25" href="#" on:click={() => navigate("/map")}>
+    <a class="_54a92c25" href="#" on:click={() => navigate('/map')}>
       <svg
         class="feather feather-map"
         fill="none"
@@ -119,7 +127,7 @@ import {navigate} from "./routes.js";
       </svg>
       <span class="_9d701ca9">Map</span>
     </a>
-    <a class="_54a92c25" href="#" on:click={() => navigate("/galleries")}> 
+    <a class="_54a92c25" href="#" on:click={() => navigate('/galleries')}>
       <svg
         class="feather feather-image"
         fill="none"
@@ -147,7 +155,10 @@ import {navigate} from "./routes.js";
       </svg>
       <span class="_9d701ca9">Galleries</span>
     </a>
-    <a class="_54a92c25" href="#" on:click|preventDefault={() => navigate("/about")}>
+    <a
+      class="_54a92c25"
+      href="#"
+      on:click|preventDefault={() => navigate('/about')}>
       <svg
         class="feather feather-info"
         fill="none"

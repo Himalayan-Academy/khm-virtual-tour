@@ -74,8 +74,6 @@
     max-width: 100%;
   }
 
- 
-
   img.feet {
     margin: 20px;
   }
@@ -98,13 +96,30 @@
     max-width: 80px;
   }
 
-   .tab-switcher img:hover {
+  .tab-switcher img:hover {
     cursor: pointer;
   }
 
   @media only screen and (max-width: 800px) {
-    img.logo {
-      display: none;
+   
+
+    .main-column {
+      width: 100%;
+    }
+
+    figure.hero {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      text-align: center;
+      background: unset;
+      padding: 0;
+      margin: 0;
+    }
+
+    figure.hero img {
+      width: 90%;
     }
 
     .tab-and-switcher {
@@ -177,4 +192,3 @@
     <p>Loading...</p>
   {/if}
 </div>
-
