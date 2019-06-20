@@ -58,6 +58,8 @@ import {navigate} from "./routes.js";
     align-items: center;
     vertical-align: middle;
     justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   @media only screen and (min-width: 800px) {
@@ -77,9 +79,14 @@ import {navigate} from "./routes.js";
     text-decoration: none;
     color: #fff;
   }
+
+  .logo {
+    width: 48px;
+  }
 </style>
 
 <nav class="_c5d81cdb">
+  <img class="logo" src="images/logo.png" alt="Kaua'i Hindu Monastery Logo">
   <h1 class="_142498f0">
     <a href="?route=/map" class="_d03ad334">Kauai's Hindu Monastery Virtual Tour</a>
   </h1>

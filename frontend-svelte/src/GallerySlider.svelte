@@ -58,12 +58,14 @@
     overflow-x: hidden;
   }
 
+    @media only screen and (max-width: 800px) {
+      .sliders {
+        display: none;
+      }
+    }
+
   .item {
     padding: 3px;
-  }
-
-  .arrow {
-    width: 120px;
   }
 
   img {
@@ -80,7 +82,7 @@
   {#if locations}
     <a class="item arrow" href="#" on:click={prevPage}>
       <img
-        src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow-l.svg"
+        src="images/left.png"
         alt="left" />
     </a>
     {#each currentPageLocations as location}
@@ -93,7 +95,7 @@
     {/each}
     <a class="item arrow" href="#" on:click={nextPage}>
       <img
-        src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow-r.svg"
+        src="images/right.png"
         alt="right" />
     </a>
   {:else}

@@ -36,82 +36,87 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    height: calc(100vh - 60px);
-    max-height: calc(100vh - 60px);
   }
 
-  .main-display {
+  .main-content {
     flex: 1 1 auto;
     align-self: auto;
     display: flex;
-    height: calc(100vh - 180px);
-    max-height: calc(100vh - 160px);
   }
 
-  .current-tab {
+  .main-column {
+    width: 700px;
+    margin: auto;
+  }
+
+  .tab-and-switcher {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    vertical-align: top;
-    justify-content: center;
-    overflow: scroll;
   }
 
-  .current-tab figure.hero {
-    max-height: 40%;
-    max-width: 60%;
+  .tab {
+    flex: 1 1 auto;
+  }
+
+  figure.hero {
+    width: 600px;
+    height: 480px;
+    max-width: 600px;
+    max-height: 480px;
     text-align: center;
+    background: gray;
+    padding: 0;
+    margin: 0;
   }
 
   figure.hero img {
-    border-radius: 20px;
-    border: 3px solid #8c3945;
-    max-width: 100%;
+    height: 100%;
     max-height: 100%;
+    max-width: 100%;
   }
 
-  .current-tab img.feet {
-    width: 70%;
-    padding: 20px;
-  }
+ 
 
-  .current-tab p {
-    font-size: 16px;
-    padding: 10px;
+  img.feet {
+    margin: 20px;
   }
 
   .tab-switcher {
-    width: 15%;
-    min-width: 15%;
-    background-color: #b7c1c1;
+    width: 100px;
+    min-width: 100px;
+    align-items: center;
     display: flex;
     flex-direction: column;
   }
 
   .tab-switcher div {
-    display: flex;
-    align-items:center;
+    flex: 1 1 auto;
+    text-align: center;
+  }
 
+  .tab-switcher img {
+    width: 80px;
+    max-width: 80px;
+  }
+
+   .tab-switcher img:hover {
+    cursor: pointer;
   }
 
   @media only screen and (max-width: 800px) {
-    .tab-switcher {
+    img.logo {
       display: none;
     }
-    .mobile-menu {
-      display: block;
+
+    .tab-and-switcher {
+      flex-direction: column-reverse;
     }
-  }
 
-  .arrow-1 {
-    margin-left: -150px;
-    max-height: 120px;
-  }
-
-  .tab-item {
-    border: 2px solid white;
-    max-height: 60px;
-    margin-right: 10px;
+    .tab-switcher {
+      flex-direction: row;
+      order: 0;
+      width: 100%;
+      align-items: center;
+    }
   }
 
   h1 {
@@ -121,75 +126,55 @@
   }
 </style>
 
-<div class="container flex">
+<div class="flex">
   {#if location}
-    <div class="main-display">
-      <div class="container current-tab">
+    <div class="main-content">
+      <div class="main-column">
         <h1>{location.metadata.title}</h1>
         <p>{location.metadata.description}</p>
-        <figure class="hero">
-          <img
-            src="http://dev.himalayanacademy.com/virtualtour/{location.metadata.hero_image}"
-            alt={location.metadata.title} />
-        </figure>
-        <img
-          class="feet"
-          src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/feet.svg"
-          alt="decoration" />
+        <div class="tab-and-switcher">
+          <div clas="tab">
+            <figure class="hero">
+              <img
+                src="http://dev.himalayanacademy.com/virtualtour/{location.metadata.hero_image}"
+                alt={location.metadata.title} />
+            </figure>
+            <img
+              class="feet"
+              src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/feet.svg"
+              alt="decoration" />
+          </div>
+          <div class="tab-switcher">
+            {#if location['quad-videos'][0]}
+              <div>
+                <img src="images/drone-icon.png" alt="drone videos" />
+              </div>
+            {/if}
+
+            {#if location.panoramas[0]}
+              <div>
+                <img src="images/360-icon.png" alt="360 videos" />
+              </div>
+            {/if}
+
+            {#if location.slideshows[0]}
+              <div>
+                <img src="images/slideshow-icon.png" alt="slideshows" />
+              </div>
+            {/if}
+
+            {#if location.videos[0]}
+              <div>
+                <img src="images/camera-icon.png" alt="videos" />
+              </div>
+            {/if}
+          </div>
+        </div>
       </div>
-      <div class="tab-switcher">
-        {#if location['quad-videos'][0]}
-        <div>
-          <img
-            class="arrow-1"
-            src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow_1.svg"
-            alt="decoration" />
-          <img
-            src="http://img.youtube.com/vi/{location['quad-videos'][0].video}/maxresdefault.jpg"
-            class="tab-item" />
-        </div>
-        {/if}
-
-        {#if location.panoramas[0]}
-        <div>
-          <img
-            class="arrow-1"
-            src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow_2.svg"
-            alt="decoration" />
-          <img
-            src="http://dev.himalayanacademy.com/virtualtour/{location.panoramas[0].image}"
-            class="tab-item" />
-        </div>
-        {/if}
-
-        {#if location.slideshows[0]}
-        <div>
-          <img
-            class="arrow-1"
-            src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow_3.svg"
-            alt="decoration" />
-          <img
-            src="http://dev.himalayanacademy.com/virtualtour/{location.slideshows[0].image}"
-            class="tab-item" />
-        </div>
-        {/if}
-
-        {#if location.videos[0]}
-        <div>
-          <img
-            class="arrow-1"
-            src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/arrow_4.svg"
-            alt="decoration" />
-          <img
-            src="http://img.youtube.com/vi/{location.videos[0].video}/maxresdefault.jpg"
-            class="tab-item" />
-        </div>
-        {/if}
-      </div>
-
     </div>
-    <GallerySlider class="sliders" />
+    <GallerySlider />
   {:else}
     <p>Loading...</p>
   {/if}
 </div>
+
