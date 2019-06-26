@@ -75,16 +75,16 @@
     flex: 1 1 auto;
     height: calc(100vh - 60px);
     background-color: #746e24;
-    background-image: url("http://dev.himalayanacademy.com/virtualtour/points-of-interest/bg2.jpg")
-      repeat;
+    background-image: url("http://dev.himalayanacademy.com/virtualtour/points-of-interest/bg2.jpg");
+    background-repeat: repeat;
   }
 
   .item-column {
     width: 15%;
     border-left: 3px solid #8c3945;
     background-color: #746e24;
-    background-image: url("http://dev.himalayanacademy.com/virtualtour/points-of-interest/bg2.jpg")
-      repeat;
+    background-image: url("http://dev.himalayanacademy.com/virtualtour/points-of-interest/bg2.jpg");
+    background-repeat: repeat;
   }
 
   @media only screen and (max-width: 800px) {
@@ -117,8 +117,6 @@
     text-decoration: none;
     color: rgb(250, 250, 250);
   }
-
- 
 </style>
 
 <div class="map">
