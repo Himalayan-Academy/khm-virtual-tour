@@ -1,6 +1,7 @@
 <script>
   import { parseLocation } from "./routes.js";
   import GallerySlider from "./GallerySlider.svelte";
+  import Slideshow from "./Slideshow.svelte";
 
   let location = false;
 
@@ -84,6 +85,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    padding-left: 25px;
   }
 
   .tab-switcher div {
@@ -137,6 +139,7 @@
       width: 100%;
       align-items: center;
       padding-bottom: 10px;
+      padding-left: unset;
     }
 
     h1 {
@@ -159,11 +162,7 @@
         <p class="show-desktop">{location.metadata.description}</p>
         <div class="tab-and-switcher">
           <div clas="tab">
-            <figure class="hero">
-              <img
-                src="http://dev.himalayanacademy.com/virtualtour/{location.metadata.hero_image}"
-                alt={location.metadata.title} />
-            </figure>
+            <Slideshow images={location.slideshows}></Slideshow>
             <p class="show-mobile">{location.metadata.description}</p>
 
             <img
