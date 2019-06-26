@@ -2,8 +2,18 @@
   import { parseLocation } from "./routes.js";
   import GallerySlider from "./GallerySlider.svelte";
   import Slideshow from "./Slideshow.svelte";
+  import Panoramas from "./Panoramas.svelte";
 
   let location = false;
+
+  let tabs = {
+    slideshow: Slideshow,
+    panoramas: Panoramas
+  };
+
+  let datasets;
+
+  let activeTab = "panoramas";
 
   async function getLocation(id) {
     console.log("id", id);
@@ -18,6 +28,10 @@
       document.title = `${
         location.metadata.title
       } - Kauai Hindu Monastery Virtual Tour`;
+      datasets = {
+        slideshow: location.slideshows,
+        panoramas: location.panoramas
+      };
     } else {
       console.error("Error fetching locations", res);
     }
@@ -162,7 +176,9 @@
         <p class="show-desktop">{location.metadata.description}</p>
         <div class="tab-and-switcher">
           <div clas="tab">
-            <Slideshow images={location.slideshows}></Slideshow>
+            <svelte:component
+              this={tabs[activeTab]}
+              dataset={datasets[activeTab]} />
             <p class="show-mobile">{location.metadata.description}</p>
 
             <img

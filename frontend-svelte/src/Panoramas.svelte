@@ -1,13 +1,16 @@
 <script>
   export let dataset;
   let currentImageIndex = 0;
-  let currentImage = false
-  let currentCaption = false
+  let currentImage = false;
+  let currentCaption = false;
 
-$: {
-   currentImage = dataset[currentImageIndex].image;
-   currentCaption = dataset[currentImageIndex].caption;
-}
+  console.log("dataset", dataset)
+
+  $: {
+    currentImage = dataset[currentImageIndex].image;
+    currentCaption = dataset[currentImageIndex].caption;
+    console.log(dataset.length, currentImageIndex)
+  }
 
   const goPrev = () => {
     if (currentImageIndex > 0) {
@@ -16,7 +19,7 @@ $: {
   };
 
   const goNext = () => {
-    if (currentImageIndex < dataset.length) {
+    if (currentImageIndex < dataset.length - 1) {
       currentImageIndex = currentImageIndex + 1;
     }
   };
@@ -78,8 +81,14 @@ $: {
     vertical-align: middle;
     margin: auto;
   }
+
+  a-scene {
+    width: 640px;
+    height: 480px;
+  }
 </style>
 
+{#if dataset}
 <div class="tab">
   <div>
     <img
@@ -87,12 +96,22 @@ $: {
       src="images/arrow-right.png"
       on:click={goPrev} />
   </div>
-  <figure class="hero">
-    <img
-      src="http://dev.himalayanacademy.com/virtualtour/{currentImage}"
-      alt={currentCaption} />
-  </figure>
+  <a-scene embedded="true">
+    <a-assets>
+      {#each dataset as image, i}
+        <img
+          id="img-{i}"
+          src="http://dev.himalayanacademy.com/virtualtour/{image.image}"
+          crossorigin="anonymous"
+          alt={image.caption} />
+      {/each}
+    </a-assets>
+    <a-sky id="image-360" src="#img-{currentImageIndex}" rotation="0 -20 0" />
+  </a-scene>
   <div>
     <img class="c-pointer" src="images/arrow-right.png" on:click={goNext} />
   </div>
 </div>
+{:else}
+<p>loading...</p>
+{/if}

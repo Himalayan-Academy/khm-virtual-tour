@@ -39,7 +39,6 @@
       currentPageStart = itemsPerPage * currentPage;
       currentPageEnd = currentPageStart + itemsPerPage;
       currentPageLocations = locations.slice(currentPageStart, currentPageEnd);
-      console.dir("selected locations", currentPageLocations);
     }
   }
 
