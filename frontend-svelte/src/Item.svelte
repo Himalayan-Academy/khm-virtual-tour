@@ -3,17 +3,22 @@
   import GallerySlider from "./GallerySlider.svelte";
   import Slideshow from "./Slideshow.svelte";
   import Panoramas from "./Panoramas.svelte";
+  import Videos from "./Videos.svelte";
 
   let location = false;
 
   let tabs = {
     slideshow: Slideshow,
-    panoramas: Panoramas
+    panoramas: Panoramas,
+    videos: Videos,
+    drone: Videos
   };
 
   let datasets;
 
-  let activeTab = "panoramas";
+  let activeTab = "slideshow";
+  let currentTab;
+  let currentDataset;
 
   async function getLocation(id) {
     console.log("id", id);
@@ -30,7 +35,9 @@
       } - Kauai Hindu Monastery Virtual Tour`;
       datasets = {
         slideshow: location.slideshows,
-        panoramas: location.panoramas
+        panoramas: location.panoramas,
+        videos: location.videos,
+        drone: location["quad-videos"]
       };
     } else {
       console.error("Error fetching locations", res);
@@ -42,7 +49,11 @@
   getLocation(params.location);
 
   $: {
-    console.log("location", location);
+    console.log("activeTab", activeTab);
+    currentTab = tabs[activeTab];
+    if (datasets) {
+      currentDataset = datasets[activeTab];
+    }
   }
 </script>
 
@@ -73,10 +84,6 @@
   }
 
   figure.hero {
-    width: 600px;
-    height: 480px;
-    max-width: 600px;
-    max-height: 480px;
     text-align: center;
     background: gray;
     padding: 0;
@@ -176,9 +183,7 @@
         <p class="show-desktop">{location.metadata.description}</p>
         <div class="tab-and-switcher">
           <div clas="tab">
-            <svelte:component
-              this={tabs[activeTab]}
-              dataset={datasets[activeTab]} />
+            <svelte:component this={currentTab} dataset={currentDataset} />
             <p class="show-mobile">{location.metadata.description}</p>
 
             <img
@@ -190,27 +195,40 @@
             {#if location['quad-videos'][0]}
               <div>
                 <img
-                  class="active"
                   src="images/drone-icon.png"
-                  alt="drone videos" />
+                  alt="drone videos"
+                  class:active={activeTab == 'drone'}
+                  on:click={() => (activeTab = 'drone')} />
               </div>
             {/if}
 
             {#if location.panoramas[0]}
               <div>
-                <img src="images/360-icon.png" alt="360 videos" />
+                <img
+                  src="images/360-icon.png"
+                  alt="360 videos"
+                  class:active={activeTab == 'panoramas'}
+                  on:click={() => (activeTab = 'panoramas')} />
               </div>
             {/if}
 
             {#if location.slideshows[0]}
               <div>
-                <img src="images/slideshow-icon.png" alt="slideshows" />
+                <img
+                  src="images/slideshow-icon.png"
+                  alt="slideshows"
+                  class:active={activeTab == 'slideshow'}
+                  on:click={() => (activeTab = 'slideshow')} />
               </div>
             {/if}
 
             {#if location.videos[0]}
               <div>
-                <img src="images/camera-icon.png" alt="videos" />
+                <img
+                  src="images/camera-icon.png"
+                  alt="videos"
+                  class:active={activeTab == 'videos'}
+                  on:click={() => (activeTab = 'videos')} />
               </div>
             {/if}
           </div>
