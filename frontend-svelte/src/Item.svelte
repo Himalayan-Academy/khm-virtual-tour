@@ -91,6 +91,12 @@
     text-align: center;
   }
 
+  .tab-switcher img.active {
+    border: solid 6px maroon;
+    border-radius: 50%;
+    padding: 8px;
+  }
+
   .tab-switcher img {
     width: 80px;
     max-width: 80px;
@@ -101,10 +107,9 @@
   }
 
   @media only screen and (max-width: 800px) {
-   
-
     .main-column {
       width: 100%;
+      padding: 5px;
     }
 
     figure.hero {
@@ -131,6 +136,11 @@
       order: 0;
       width: 100%;
       align-items: center;
+      padding-bottom: 10px;
+    }
+
+    h1 {
+      text-align: center;
     }
   }
 
@@ -146,7 +156,7 @@
     <div class="main-content">
       <div class="main-column">
         <h1>{location.metadata.title}</h1>
-        <p>{location.metadata.description}</p>
+        <p class="show-desktop">{location.metadata.description}</p>
         <div class="tab-and-switcher">
           <div clas="tab">
             <figure class="hero">
@@ -154,6 +164,8 @@
                 src="http://dev.himalayanacademy.com/virtualtour/{location.metadata.hero_image}"
                 alt={location.metadata.title} />
             </figure>
+            <p class="show-mobile">{location.metadata.description}</p>
+
             <img
               class="feet"
               src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/feet.svg"
@@ -162,7 +174,10 @@
           <div class="tab-switcher">
             {#if location['quad-videos'][0]}
               <div>
-                <img src="images/drone-icon.png" alt="drone videos" />
+                <img
+                  class="active"
+                  src="images/drone-icon.png"
+                  alt="drone videos" />
               </div>
             {/if}
 

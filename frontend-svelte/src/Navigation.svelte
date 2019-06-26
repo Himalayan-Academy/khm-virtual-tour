@@ -31,7 +31,7 @@
   ._54a92c25 {
     padding-left: 15px;
     padding-right: 15px;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
     display: flex;
     justify-content: space-between;
     vertical-align: middle;
