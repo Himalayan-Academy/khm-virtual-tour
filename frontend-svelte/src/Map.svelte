@@ -1,4 +1,5 @@
 <script>
+  import SocialButtons from "./SocialButtons.svelte";
   let map = {};
   let markers = {};
   let locations = false;
@@ -90,6 +91,10 @@
     .item-column {
       display: none;
     }
+
+    .social-buttons {
+      display: none;
+    }
   }
 
   ul {
@@ -113,23 +118,7 @@
     color: rgb(250, 250, 250);
   }
 
-  .social-buttons {
-    position: fixed;
-    display: flex;
-    bottom: 10px;
-    left: 10px;
-    z-index: 99999;
-  }
-
-  a.social-button {
-    width: 64px;
-    height: 64px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    text-decoration: none;
-  }
+ 
 </style>
 
 <div class="map">
@@ -150,6 +139,8 @@
         {/each}
       </ul>
     </div>
-    <div class="social-buttons" />
+    <div class="social-buttons">
+      <SocialButtons />
+    </div>
   {/if}
 </div>
