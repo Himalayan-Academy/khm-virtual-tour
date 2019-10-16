@@ -9,9 +9,7 @@
   let currentPageLocations;
 
   async function getLocations() {
-    const res = await fetch(
-      "/virtualtour/index.php/locations"
-    );
+    const res = await fetch("/virtualtour/index.php/locations");
 
     const data = await res.json();
 
@@ -55,13 +53,16 @@
     background-color: #8c3945;
     flex-wrap: nowrap;
     overflow-x: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
   }
 
-    @media only screen and (max-width: 800px) {
-      .sliders {
-        display: none;
-      }
+  @media only screen and (max-width: 800px) {
+    .sliders {
+      display: none;
     }
+  }
 
   .item {
     padding: 3px;
@@ -80,9 +81,7 @@
 <div class="sliders">
   {#if locations}
     <a class="item arrow" href="#" on:click={prevPage}>
-      <img
-        src="images/left.png"
-        alt="left" />
+      <img src="images/left.png" alt="left" />
     </a>
     {#each currentPageLocations as location}
       <a class="item" href="?route=/location&location={location.id}">
@@ -93,9 +92,7 @@
       </a>
     {/each}
     <a class="item arrow" href="#" on:click={nextPage}>
-      <img
-        src="images/right.png"
-        alt="right" />
+      <img src="images/right.png" alt="right" />
     </a>
   {:else}
     <p>Loading</p>
