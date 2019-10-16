@@ -8,7 +8,7 @@
   export let y;
 
   const urlWithPrefix = (id, url) =>
-    `http://dev.himalayanacademy.com/virtualtour/index.php/thumb/500/${id}/${url}`;
+    `/virtualtour/index.php/thumb/500/${id}/${url}`;
 
   const imageUrl = urlWithPrefix(id, hero_image);
 </script>

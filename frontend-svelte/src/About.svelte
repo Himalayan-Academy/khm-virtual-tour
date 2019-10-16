@@ -18,7 +18,7 @@ The monks live a strict lifestyle of daily religious worship, raja yoga sadhanas
 
 The monastery's religious tradition is the Nandinatha Sampradaya, which follows the monistic school of Saiva Siddhanta. The lineage is known as the Kailasa Parampara. The philosophy is called Advaita Saiva Siddhanta or Advaita Ishvaravada, known in English as monistic theism or panentheism. Monistic theism simultaneously accepts that God has a personal form, that He creates, pervades and is all that exists and that He ultimately transcends all existence and that the soul is, in essence, one with God.
 
-For more information, read our booklet [All About Kauai's Hindu Monastery](https://www.himalayanacademy.com/monastery/about/intro)
+For more information, read our booklet [All About Kauai's Hindu Monastery](https:/monastery/about/intro)
 `
 
 let content = marked(contentAsMarkdown)

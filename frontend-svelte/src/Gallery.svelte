@@ -10,7 +10,7 @@
 
   async function getLocations() {
     const res = await fetch(
-      "http://dev.himalayanacademy.com/virtualtour/index.php/locations"
+      "/virtualtour/index.php/locations"
     );
 
     const data = await res.json();

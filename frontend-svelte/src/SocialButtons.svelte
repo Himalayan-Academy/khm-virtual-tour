@@ -53,11 +53,11 @@
 <div class="_b8d4efcf">
   <a
     class="_4bf294f"
-    href="https://www.himalayanacademy.com/blog/taka"
+    href="https:/blog/taka"
     target="_blank">
     <div class="_4a4f2e49">
       <img
-        src="https://dev.himalayanacademy.com/virtualtour/points-of-interest/khm_logo.png"
+        src="https:/virtualtour/points-of-interest/khm_logo.png"
         class="_baf7d96a" />
     </div>
     <span class="_8c8965d2">Blog</span>
@@ -68,7 +68,7 @@
     target="_blank">
     <div class="_4a4f2e49">
       <img
-        src="https://dev.himalayanacademy.com/virtualtour/points-of-interest/facebook.png"
+        src="https:/virtualtour/points-of-interest/facebook.png"
         class="_baf7d96a" />
     </div>
     <span class="_8c8965d2">Facebook</span>
@@ -79,7 +79,7 @@
     target="_blank">
     <div class="_4a4f2e49">
       <img
-        src="https://dev.himalayanacademy.com/virtualtour/points-of-interest/instagram.png"
+        src="https:/virtualtour/points-of-interest/instagram.png"
         class="_baf7d96a" />
     </div>
     <span class="_8c8965d2">Instagram</span>

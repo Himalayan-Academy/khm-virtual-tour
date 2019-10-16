@@ -10,7 +10,7 @@
 
   async function getLocations() {
     const res = await fetch(
-      "http://dev.himalayanacademy.com/virtualtour/index.php/locations"
+      "/virtualtour/index.php/locations"
     );
 
     const data = await res.json();
@@ -88,7 +88,7 @@
       <a class="item" href="?route=/location&location={location.id}">
         <img
           class="selector"
-          src="http://dev.himalayanacademy.com/virtualtour/index.php/thumb/500/{location.id}/{location.hero_image}"
+          src="/virtualtour/index.php/thumb/500/{location.id}/{location.hero_image}"
           alt={location.title} />
       </a>
     {/each}

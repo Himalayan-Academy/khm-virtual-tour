@@ -103,8 +103,8 @@
     {#if currentVideo.kind == 'video'}
       <video
         controls
-        poster="http://dev.himalayanacademy.com/virtualtour/{currentVideo.poster}"
-        src="http://dev.himalayanacademy.com/virtualtour/{currentVideo.video}" />
+        poster="/virtualtour/{currentVideo.poster}"
+        src="/virtualtour/{currentVideo.video}" />
     {:else}
       <div class="embed-container">
         <iframe

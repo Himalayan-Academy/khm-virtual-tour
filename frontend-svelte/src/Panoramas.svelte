@@ -101,7 +101,7 @@
       {#each dataset as image, i}
         <img
           id="img-{i}"
-          src="http://dev.himalayanacademy.com/virtualtour/{image.image}"
+          src="/virtualtour/{image.image}"
           crossorigin="anonymous"
           alt={image.caption} />
       {/each}

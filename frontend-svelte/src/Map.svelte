@@ -4,7 +4,7 @@
   let markers = {};
   let locations = false;
 
-  let url = "http://dev.himalayanacademy.com/virtualtour/index.php"; //"http://localhost:8081";
+  let url = "/virtualtour/index.php"; //"//localhost:8081";
 
   console.log(`fetching locations...`);
   fetch(`${url}/locations`)
@@ -24,7 +24,7 @@
 
       var bounds = [[0, 0], [694, 1000]];
       var image = L.imageOverlay(
-        "http://dev.himalayanacademy.com/virtualtour/points-of-interest/aadheenam-map-alpha.png",
+        "/virtualtour/points-of-interest/aadheenam-map-alpha.png",
         bounds
       ).addTo(map);
       map.fitBounds(bounds);
@@ -50,7 +50,7 @@
           .addTo(map).bindPopup(`
             <b>${location.title}</b>
             <br>
-            <img style="max-width: 100%; max-height: 200px" src="http://dev.himalayanacademy.com/virtualtour/index.php/thumb/200/${
+            <img style="max-width: 100%; max-height: 200px" src=/virtualtour/index.php/thumb/200/${
               location.id
             }/${location.hero_image}">
             <br>
@@ -75,7 +75,7 @@
     flex: 1 1 auto;
     height: calc(100vh - 60px);
     background-color: #746e24;
-    background-image: url("http://dev.himalayanacademy.com/virtualtour/points-of-interest/bg2.jpg");
+    background-image: url("/virtualtour/points-of-interest/bg2.jpg");
     background-repeat: repeat;
   }
 
@@ -83,7 +83,7 @@
     width: 15%;
     border-left: 3px solid #8c3945;
     background-color: #746e24;
-    background-image: url("http://dev.himalayanacademy.com/virtualtour/points-of-interest/bg2.jpg");
+    background-image: url("/virtualtour/points-of-interest/bg2.jpg");
     background-repeat: repeat;
   }
 

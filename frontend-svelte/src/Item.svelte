@@ -23,7 +23,7 @@
   async function getLocation(id) {
     console.log("id", id);
     const res = await fetch(
-      `http://dev.himalayanacademy.com/virtualtour/index.php/location/${id}`
+      `/virtualtour/index.php/location/${id}`
     );
 
     const data = await res.json();
@@ -188,7 +188,7 @@
 
             <img
               class="feet"
-              src="http://dev.himalayanacademy.com/virtualtour/points-of-interest/feet.svg"
+              src="/virtualtour/points-of-interest/feet.svg"
               alt="decoration" />
           </div>
           <div class="tab-switcher">

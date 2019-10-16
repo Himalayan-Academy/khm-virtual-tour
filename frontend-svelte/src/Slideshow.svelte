@@ -89,7 +89,7 @@ $: {
   </div>
   <figure class="hero">
     <img
-      src="http://dev.himalayanacademy.com/virtualtour/{currentImage}"
+      src="/virtualtour/{currentImage}"
       alt={currentCaption} />
   </figure>
   <div>
