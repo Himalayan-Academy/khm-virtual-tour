@@ -1,53 +1,44 @@
-# elm-miniplate
-A little minimal boilerplate for Elm 0.19
+# Kauai Monastery Virtual Tour
 
-## Description
-This little boilerplate uses a local install of Elm 0.19 and Elm-Live. It is self-contained.
+This is the new version of the [Kauai Monastery Virtual Tour](/virtualtour). We've moved our frontend system to [Svelte](https://svelte.dev) because it is a better fit for our practices and knowledge. Our previous system which used [Elm](https://elm-lang.org) made it harder to cope with our changing requirements, the move to Svelte and back to using HTML/CSS/JS makes it easier for us to iterate.
 
-## Setup
-You need to have [nodejs](https://nodejs.org) installed to use this boilerplate.
+Svelte is a proven technology in the same space of _react, vue and angular_ but much easier to use as its components ressemble normal HTML5 code. It is used in thousands if not millions of devices world-wide and performs really well.
 
-To install the dependencies, use:
+This is our first iteration using Svelte, it is easier to maintain than our older version and allows us to be flexible enough to cope with design and model changes.
 
-```
-$ npm install
-```
+---
 
-## Development Server
+Below is the readme to learn how to work with svelte.
 
-```
-$ ./dev.sh
-```
+# svelte app
 
-Will launch [elm-live](https://github.com/wking-io/elm-live/).
+This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
 
-## Build For Production
+To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
-```
-$ ./build.sh
+```bash
+npx degit sveltejs/template svelte-app
+cd svelte-app
 ```
 
-Will use `elm-make --optimize` to build a production version of your source code. The code is built in the `build/` folder.
+*Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
-## Running the local Elm binary
 
+## Get started
+
+Install the dependencies...
+
+```bash
+cd svelte-app
+npm install
 ```
-$ ./local_elm.sh ...
+
+...then start [Rollup](https://rollupjs.org):
+
+```bash
+npm run dev
 ```
 
-You can call the script above passing arguments you'd normally pass to the `elm` binary and it should just work.
+Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
 
-## Windows 10 Support
-All the _bash scripts_ have equivalents in _Windows Batch_ format.
 
-* `dev.sh` &rarr; `dev.bat`
-* `build.sh` &rarr; `build.bat`
-* `local_elm.sh` &rarr; `local_elm.bat` 
-
-You can follow the same instructions as the commands above just replaing the script files with their _batch equivalents_.
-
-## TODO
-There are many things to implement, on the roadmap I have:
-
-- [ ] Add support for rollup
-- [ ] Rebuild the _debug_ version of `index.html` when the live-server detect a change.

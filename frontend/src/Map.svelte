@@ -50,7 +50,7 @@
           .addTo(map).bindPopup(`
             <b>${location.title}</b>
             <br>
-            <img style="max-width: 100%; max-height: 200px" src=/virtualtour/index.php/thumb/200/${
+            <img style="max-width: 100%; max-height: 200px" src="/virtualtour/index.php/thumb/200/${
               location.id
             }/${location.hero_image}">
             <br>
