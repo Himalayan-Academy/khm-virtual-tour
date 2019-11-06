@@ -1,5 +1,5 @@
 <script>
-  import { navigate } from "./routes.js";
+  import { navigate, currentRoute } from "./routes.js";
 </script>
 
 <style>
@@ -41,6 +41,7 @@
     color: #fff;
     background-color: #8c3945;
     border: 0px;
+    padding-bottom: 8px;
   }
 
   ._54a92c25:visited {
@@ -89,6 +90,10 @@
       display: none;
     }
   }
+
+  .active {
+    border-bottom: solid 2px white;
+  }
 </style>
 
 <nav class="_c5d81cdb">
@@ -99,7 +104,11 @@
     </a>
   </h1>
   <ul class="_4925b2e7">
-    <a class="_54a92c25" href="#" on:click={() => navigate('/map')}>
+    <a
+      class="_54a92c25"
+      href="#"
+      class:active={currentRoute() == '/map'}
+      on:click={() => navigate('/map')}>
       <svg
         class="feather feather-map"
         fill="none"
@@ -127,7 +136,11 @@
       </svg>
       <span class="_9d701ca9">Map</span>
     </a>
-    <a class="_54a92c25" href="#" on:click={() => navigate('/galleries')}>
+    <a
+      class="_54a92c25"
+      href="#"
+      class:active={currentRoute() == '/galleries'}
+      on:click={() => navigate('/galleries')}>
       <svg
         class="feather feather-image"
         fill="none"
@@ -158,6 +171,7 @@
     <a
       class="_54a92c25"
       href="#"
+      class:active={currentRoute() == '/about'}
       on:click|preventDefault={() => navigate('/about')}>
       <svg
         class="feather feather-info"

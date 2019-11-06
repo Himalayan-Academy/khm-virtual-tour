@@ -50,14 +50,13 @@
           .addTo(map).bindPopup(`
             <b>${location.title}</b>
             <br>
-            <img style="max-width: 100%; max-height: 200px" src="/virtualtour/index.php/thumb/200/${
-              location.id
-            }/${location.hero_image}">
+            <a href="index.html?route=/location&location=${location.id}">
+              <img style="max-width: 100%; max-height: 200px" src="/virtualtour/index.php/thumb/200/${location.id}/${location.hero_image}">
+            </a>
             <br>
             ${location.about} 
-            <a href="index.html?route=/location&location=${
-              location.id
-            }">Learn more...</a>
+            <br><br>
+            <a class="learn-more" href="index.html?route=/location&location=${location.id}">Learn more...</a>
             `);
       });
       console.log("markers", markers);
@@ -130,7 +129,7 @@
           <li>
             <span>
               <a href="?route=/location&location={location.id}">
-                 {location.title}
+                {location.title}
               </a>
             </span>
           </li>

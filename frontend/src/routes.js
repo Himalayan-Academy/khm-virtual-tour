@@ -13,6 +13,16 @@ const routes = {
     "*": MapView
 }
 
+export const currentRoute = () => {
+    const parsed = queryString.parse(location.search);
+
+    if (typeof parsed.route == "undefined") {
+        return "/map";
+    }
+
+    return parsed.route;
+}
+
 export const parseLocation = () => {
     const parsed = queryString.parse(location.search);
 
