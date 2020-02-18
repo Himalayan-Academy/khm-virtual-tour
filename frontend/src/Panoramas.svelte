@@ -36,7 +36,7 @@
     max-width: 600px;
     max-height: 480px;
     text-align: center;
-    background: gray;
+    background: #F3F1EA;
     padding: 0;
     margin: 0;
   }

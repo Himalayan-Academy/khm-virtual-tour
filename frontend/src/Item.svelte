@@ -22,17 +22,13 @@
 
   async function getLocation(id) {
     console.log("id", id);
-    const res = await fetch(
-      `/virtualtour/index.php/location/${id}`
-    );
+    const res = await fetch(`/virtualtour/index.php/location/${id}`);
 
     const data = await res.json();
 
     if (res.ok) {
       location = data.location;
-      document.title = `${
-        location.metadata.title
-      } - Kauai Hindu Monastery Virtual Tour`;
+      document.title = `${location.metadata.title} - Kauai Hindu Monastery Virtual Tour`;
       datasets = {
         slideshow: location.slideshows,
         panoramas: location.panoramas,
@@ -85,7 +81,7 @@
 
   figure.hero {
     text-align: center;
-    background: gray;
+    background: #f3f1ea;
     padding: 0;
     margin: 0;
   }
