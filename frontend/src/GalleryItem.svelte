@@ -19,6 +19,7 @@
     color: #000;
     outline: none;
     text-align: center;
+    text-decoration: none;
   }
 
   @media only screen and (max-width: 800px) {
@@ -31,7 +32,7 @@
     color: #000;
   }
 
-  h1 {
+  h2 {
     color: #8c3945;
   }
 
@@ -45,7 +46,7 @@
 </style>
 
 <a href="?route=/location&location={id}">
-  <h1>{title}</h1>
+  <h2>{title}</h2>
   <img src={imageUrl} alt={title} />
   <p>{about}</p>
 </a>
