@@ -82,6 +82,7 @@
   figure.hero {
     text-align: center;
     background: #f3f1ea;
+    background-image: url(/assets/img/bg-page.jpg);
     padding: 0;
     margin: 0;
   }
@@ -178,7 +179,7 @@
         <h1>{location.metadata.title}</h1>
         <p class="show-desktop">{location.metadata.description}</p>
         <div class="tab-and-switcher">
-          <div clas="tab">
+          <div class="tab-wrapper">
             <svelte:component this={currentTab} dataset={currentDataset} />
             <p class="show-mobile">{location.metadata.description}</p>
 

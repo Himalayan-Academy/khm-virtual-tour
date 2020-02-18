@@ -29,6 +29,7 @@
   figure.hero {
     text-align: center;
     background: #F3F1EA;
+    background-image: url(/assets/img/bg-page.jpg);
     padding: 0;
     margin: 0;
   }
