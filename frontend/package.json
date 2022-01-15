@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "leaflet": "^1.5.1",
-    "marked": "^0.6.2",
+    "marked": "^4.0.10",
     "query-string": "^6.6.0"
   }
 }
